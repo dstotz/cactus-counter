@@ -1,10 +1,10 @@
 import * as React from "react";
 import { render } from "@testing-library/react-native";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
 
 it(`renders correctly`, () => {
-  const tree = render(<ThemedText>Snapshot test!</ThemedText>).toJSON();
+  const tree = render(<ThemedView>Snapshot test!</ThemedView>).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={{}}
+>
+  <TextInput
+    caretHidden={true}
+    onChange={[Function]}
+    style={
+      {
+        "borderColor": "black",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "color": "black",
+        "fontSize": 32,
+        "height": 75,
+        "padding": 6,
+        "textAlign": "center",
+        "width": 165,
+      }
+    }
+    value="5"
+  />
+</View>
+`;

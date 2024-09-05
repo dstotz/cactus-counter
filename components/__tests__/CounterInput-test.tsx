@@ -1,10 +1,10 @@
 import * as React from "react";
 import { render } from "@testing-library/react-native";
 
-import { ThemedText } from "../ThemedText";
+import { CounterInput } from "../CounterInput";
 
 it(`renders correctly`, () => {
-  const tree = render(<ThemedText>Snapshot test!</ThemedText>).toJSON();
+  const tree = render(<CounterInput value={5} onChange={() => {}} />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
