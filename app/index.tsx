@@ -9,6 +9,7 @@ import { Card, cards } from "@/lib/counterModifiers";
 import { getCard, ScryfallCard } from "@/lib/scryfall";
 import { useState } from "react";
 import { CounterInput } from "@/components/CounterInput";
+import { Link } from "expo-router";
 
 export default function Counter() {
   const [shownCard, setShownCard] = useState<ScryfallCard | undefined>();
@@ -44,91 +45,8 @@ export default function Counter() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Modal
-        animationType="fade"
-        visible={modalOpen}
-        onRequestClose={() => {
-          setModalOpen(!modalOpen);
-        }}
-        presentationStyle="fullScreen"
-      >
-        <Image
-          source={{ uri: shownCard?.image_uris.large }}
-          style={{ width: "100%", height: "65%", marginTop: "25%" }}
-        />
-        <Button title="Back" onPress={() => setModalOpen(false)} />
-      </Modal>
-
-      <ThemedView style={[{ marginTop: 32 }, styles.stepContainer]}>
-        <ThemedText
-          type="subtitle"
-          style={{ textAlign: "center", paddingBottom: 8 }}
-        >
-          +1/+1 Counters
-        </ThemedText>
-        <View style={{ flexDirection: "row", gap: 10 }}>
-          <CounterButton title="-1" numCounters={1} onPress={removeCounters} />
-          <CounterButton
-            title="-10"
-            numCounters={10}
-            onPress={removeCounters}
-          />
-          <CounterInput
-            value={counters}
-            onChange={(newCounters) => setCounters(newCounters)}
-          />
-          <CounterButton title="+1" numCounters={1} onPress={addCounters} />
-          <CounterButton title="+10" numCounters={10} onPress={addCounters} />
-        </View>
-        <Button title="Reset" onPress={() => setCounters(0)} />
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="defaultSemiBold">Active abilities</ThemedText>
-        {activeAbilityCards.map((card) => (
-          <Button
-            key={card.name}
-            title={card.name}
-            onPress={() => activateAbility(card)}
-          />
-        ))}
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="defaultSemiBold">Passive abilities</ThemedText>
-        {passiveAbilityCards.map((card) => (
-          <View
-            key={card.name}
-            style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-          >
-            <Switch
-              value={activeCards.includes(card)}
-              onValueChange={(value) => handlePassiveAbilityToggle(card, value)}
-            />
-            <ThemedText onPress={() => handleCardClick(card)}>
-              {card.name}
-            </ThemedText>
-          </View>
-        ))}
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="defaultSemiBold">Passive triggers</ThemedText>
-        {passiveTriggerCards.map((card) => (
-          <View
-            key={card.name}
-            style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-          >
-            <Switch
-              value={activeCards.includes(card)}
-              onValueChange={(value) => handlePassiveAbilityToggle(card, value)}
-            />
-            <ThemedText onPress={() => handleCardClick(card)}>
-              {card.name}
-            </ThemedText>
-          </View>
-        ))}
-      </ThemedView>
+      <Link href="/individual">Individual Counter</Link>
+      <Link href="/creature">Creature Counter</Link>
     </SafeAreaView>
   );
 }

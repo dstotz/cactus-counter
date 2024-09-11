@@ -9,7 +9,7 @@ export type ScryfallCard = {
   scryfall_uri: string;
   layout: string;
   highres_image: boolean;
-  image_uris: {
+  image_uris?: {
     small: string;
     normal: string;
     large: string;

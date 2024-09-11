@@ -32,10 +32,10 @@ export const activatedAbilityCounterCalc = (
   if (card.activeModifier?.plus) {
     newCounters += card.activeModifier.plus;
   }
-  if (card.activeModifier?.doubleAll) {
+  if (card.activeModifier?.doubleAll && currentCounters > 0) {
     newCounters += currentCounters;
   }
-  if (card.activeModifier?.doubleAdded) {
+  if (card.activeModifier?.doubleAdded && newCounters > 0) {
     newCounters *= 2;
   }
   return newCounters;
