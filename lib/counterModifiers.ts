@@ -1,24 +1,4 @@
-// Types
-export type CounterTrigger = {
-  action: string;
-  x: number;
-  thing: string;
-  if?: string;
-};
-
-export type CounterModifier = {
-  plus?: number;
-  doubleAll?: boolean;
-  doubleAdded?: boolean;
-};
-
-export type Card = {
-  name: string;
-  id: string;
-  passiveTrigger?: CounterTrigger;
-  passiveModifier?: CounterModifier;
-  activeModifier?: CounterModifier;
-};
+import { Card } from "@/types/card";
 
 export const cards: Card[] = [
   // Active Ability Cards
@@ -29,6 +9,14 @@ export const cards: Card[] = [
       doubleAll: true,
     },
   },
+
+  // Kalonian Hydra (maybe somewhere else)
+
+  // Ancient Bronze Dragon (maybe somewhere else)
+
+  // Doubling Season and Primal Vigor (maybe somewhere else)
+
+  // Hardened Scales (maybe somewhere else)
 
   // Passive Ability Cards
   {

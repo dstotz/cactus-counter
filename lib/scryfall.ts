@@ -1,30 +1,6 @@
-export type ScryfallCard = {
-  object: "card";
-  id: string;
-  oracle_id: string;
-  mtgo_id: number;
-  name: string;
-  lang: string;
-  uri: string;
-  scryfall_uri: string;
-  layout: string;
-  highres_image: boolean;
-  image_uris?: {
-    small: string;
-    normal: string;
-    large: string;
-    png: string;
-    art_crop: string;
-    border_crop: string;
-  };
-  mana_cost: string;
-  cmc: number;
-  type_line: string;
-  oracle_text: string;
-  colors: string[];
-  color_identity: string[];
-  keywords: string[];
-} & { [key: string]: any };
+import { Creature } from "@/types/creature";
+import { ScryfallCard } from "@/types/scryfall";
+import uuid from "react-native-uuid";
 
 export const getCard = async (cardName: string): Promise<ScryfallCard> => {
   const response = await fetch(
@@ -33,3 +9,11 @@ export const getCard = async (cardName: string): Promise<ScryfallCard> => {
   const card = (await response.json()) as ScryfallCard;
   return card;
 };
+
+export const scryfallCardToCreature = (card: ScryfallCard): Creature => ({
+  id: card.id,
+  key: uuid.v4().toString(),
+  numCounters: 0,
+  imageUrl: card.image_uris?.normal,
+  name: card.name,
+});

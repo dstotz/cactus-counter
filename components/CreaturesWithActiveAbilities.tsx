@@ -1,5 +1,6 @@
-import { Card, cards } from "@/lib/counterModifiers";
-import { Creature } from "./DraggableCreatureBoard";
+import { cards } from "@/lib/counterModifiers";
+import { Card } from "@/types/card";
+import { Creature } from "@/types/creature";
 import { Button, View } from "react-native";
 
 type CreaturesWithActiveAbilitiesProps = {

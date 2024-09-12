@@ -1,4 +1,4 @@
-import { getCard, ScryfallCard } from "@/lib/scryfall";
+import { getCard } from "@/lib/scryfall";
 import { useEffect, useState } from "react";
 import {
   Alert,
@@ -14,11 +14,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Creature } from "./DraggableCreatureBoard";
 import uuid from "react-native-uuid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "expo-router";
 import { useAsyncStorage } from "@/hooks/useAsyncStorage";
+import { ScryfallCard } from "@/types/scryfall";
+import { Creature } from "@/types/creature";
 
 type AddCreatureProps = {
   onAdd: (creature: Creature) => void;

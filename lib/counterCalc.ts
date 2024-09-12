@@ -1,4 +1,4 @@
-import { Card } from "./counterModifiers";
+import { Card } from "@/types/card";
 
 // Returns the new number of counters after applying all active card abilities
 export const counterCalc = (

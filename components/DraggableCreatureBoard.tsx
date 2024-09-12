@@ -14,19 +14,13 @@ import {
 import DraggableGrid from "react-native-draggable-grid";
 import { AddCreatureModal } from "./AddCreatureModal";
 import { CreaturesWithActiveAbilities } from "./CreaturesWithActiveAbilities";
-import { Card } from "@/lib/counterModifiers";
 import { activatedAbilityCounterCalc } from "@/lib/counterCalc";
 import { counterTextFormat } from "@/lib/counterTextFormat";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAsyncStorage } from "@/hooks/useAsyncStorage";
-
-export type Creature = {
-  name?: string;
-  id: string;
-  key: string;
-  numCounters: number;
-  imageUrl?: string;
-};
+import { Card } from "@/types/card";
+import { Creature } from "@/types/creature";
+import { AddCardBottomSheet } from "./AddCardBottomSheet";
 
 type DraggableCreatureBoardProps = {
   onAddCreature?: (creature: Creature) => void;
@@ -39,18 +33,6 @@ export const DraggableCreatureBoard = ({
 }: DraggableCreatureBoardProps) => {
   const [selected, setSelected] = useState<Creature | undefined>();
   const [numColumns, setNumColumns] = useState(4);
-  // const [data, setData] = useState<Creature[]>([
-  //   { id: "1", key: "1", numCounters: 0 },
-  //   { id: "2", key: "2", numCounters: 0 },
-  //   { id: "3", key: "3", numCounters: 0 },
-  //   { id: "4", key: "4", numCounters: 0 },
-  //   { id: "5", key: "5", numCounters: 0 },
-  //   { id: "6", key: "6", numCounters: 0 },
-  //   { id: "7", key: "7", numCounters: 0 },
-  //   { id: "8", key: "8", numCounters: 0 },
-  //   { id: "9", key: "9", numCounters: 0 },
-  //   { id: "10", key: "10", numCounters: 0 },
-  // ]);
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const [data, setData] = useAsyncStorage<Creature[]>("creatures", []);
@@ -229,6 +211,7 @@ export const DraggableCreatureBoard = ({
         <View>
           <AddCreatureModal onAdd={addCreature} />
         </View>
+        <AddCardBottomSheet onAddCard={addCreature} />
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );

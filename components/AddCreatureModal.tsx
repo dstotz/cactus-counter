@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, View } from "react-native";
-import { Creature } from "./DraggableCreatureBoard";
 import { AddCreature } from "./AddCreature";
+import { Creature } from "@/types/creature";
 
 type AddCreatureModalProps = {
   onAdd: (creature: Creature) => void;

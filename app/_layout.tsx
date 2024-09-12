@@ -10,6 +10,7 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -32,11 +33,14 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: true, headerBackVisible: true }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="creature/index" />
-        <Stack.Screen name="individual/index" />
-      </Stack>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Stack screenOptions={{ headerShown: true, headerBackVisible: true }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="creature/index" />
+          <Stack.Screen name="individual/index" />
+          <Stack.Screen name="sandbox/index" />
+        </Stack>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

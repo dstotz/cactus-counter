@@ -5,10 +5,12 @@ import { ThemedView } from "@/components/ThemedView";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useCounters } from "@/hooks/useCounters";
 import { CounterButton } from "@/components/CounterButton";
-import { Card, cards } from "@/lib/counterModifiers";
-import { getCard, ScryfallCard } from "@/lib/scryfall";
+import { cards } from "@/lib/counterModifiers";
+import { getCard } from "@/lib/scryfall";
 import { useState } from "react";
 import { CounterInput } from "@/components/CounterInput";
+import { ScryfallCard } from "@/types/scryfall";
+import { Card } from "@/types/card";
 
 export default function Counter() {
   const [shownCard, setShownCard] = useState<ScryfallCard | undefined>();
@@ -53,7 +55,7 @@ export default function Counter() {
         presentationStyle="fullScreen"
       >
         <Image
-          source={{ uri: shownCard?.image_uris.large }}
+          source={{ uri: shownCard?.image_uris?.large }}
           style={{ width: "100%", height: "65%", marginTop: "25%" }}
         />
         <Button title="Back" onPress={() => setModalOpen(false)} />

@@ -2,7 +2,6 @@ import { useKeepAwake } from "expo-keep-awake";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DraggableCreatureBoard } from "@/components/DraggableCreatureBoard";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { Text } from "react-native";
 
 export default function Counter() {
   useKeepAwake();
